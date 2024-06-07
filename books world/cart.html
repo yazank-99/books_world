@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="css/cart.css" type="text/css">
+	<link rel="icon" type="image/x-icon" href="images/logo.ico">
+
+    <title>cart</title>
+    <style>
+       
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="row">
+            <div class="col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col"><h4><b>Book Cart</b></h4></div>
+                        <div class="col align-self-center text-right text-muted">3 items</div>
+                    </div>
+                </div>    
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src="images/The Spy Coast.jpg"></div>
+                        <div class="col">
+                            <div class="row text-muted">Novels</div>
+                            <div class="row">The Spy Coast</div>
+                        </div>
+                        <div class="col">
+                        </div>
+                        <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src="images/RichDad.jpg"></div>
+                        <div class="col">
+                            <div class="row text-muted">Fictional</div>
+                            <div class="row">rich dad poor dad</div>
+                        </div>
+                        <div class="col">
+                        </div>
+                        <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src="images/aspnet.jpg"></div>
+                        <div class="col">
+                            <div class="row text-muted">Development</div>
+                            <div class="row">ASP.NET Core  Development</div>
+                        </div>
+                        <div class="col">
+                        </div>
+                        <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="back-to-shop"><a href="AllBook.html" class="text-muted">Back to shop</a></div>
+            </div>
+            <div class="col-md-4 summary">
+                <div><h5><b>Payment</b></h5></div>
+                <hr>
+
+                <form>
+                    <div class="row">
+                        <p class="col">Card details</p>
+                        <div class="col-md-12">
+                            <input type="text" id="typeName"  siez="17"
+                            placeholder="Full name" />                        </div>
+                        <div class="col-md-12">
+                            <input type="text" id="typeText" siez="17"
+                            placeholder="Card number" minlength="19" maxlength="19" />
+                        </div>
+                    </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" id="typeExp" placeholder="MM/YY" size="5" minlength="5" maxlength="5"> 
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="password" id="typeText" 
+                                    placeholder="Cvv" size="1" minlength="3" maxlength="3" />
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="col">Discount code</p>
+                                <input id="code" placeholder="Enter your code">
+                                    <button  id="checkoutBtn" class="btn">Apply</button>
+                            </div>
+                        </div>
+
+                </form>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOTAL PRICE</div>
+                    <div id="totalPrice" class="col text-right">&euro; 30.00</div>
+                </div>
+                <button id="CHECKOUT" class="btn">CHECKOUT</button>
+            </div>
+        </div>
+        
+    </div>
+    <script >
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const checkoutBtn = document.querySelector("button.btn");
+    const codeInput = document.getElementById("code");
+    const totalPriceDiv = document.getElementById("totalPrice");
+    let discountApplied = false;
+
+    checkoutBtn.addEventListener("click", function(event) {
+        event.preventDefault(); 
+        
+        const enteredName = codeInput.value.trim();
+        
+        const originalPrice = parseFloat(totalPriceDiv.textContent.replace(/[^\d.]/g, ''));
+
+        if (originalPrice <= 30) {
+            alert("Total price is less than or equal to €30. No discount applied.");
+            return; 
+        } else if (!discountApplied && enteredName.toLowerCase() === "yazan") { 
+            const discountedPrice = originalPrice * 0.8;
+            totalPriceDiv.textContent = `€ ${discountedPrice.toFixed(2)}`;
+            discountApplied = true;
+        } else {
+            alert("Invalid name for discount");
+        }
+    });
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const typeExpInput = document.getElementById("typeExp");
+
+  typeExpInput.addEventListener("input", function(event) {
+      let value = event.target.value;
+      
+      value = value.replace(/\D/g, "");
+      
+      if (value.length > 2) {
+          value = value.slice(0, 2) + "/" + value.slice(2);
+      }
+      
+      event.target.value = value;
+  });
+
+  typeExpInput.addEventListener("blur", function(event) {
+      let value = event.target.value;
+      let year = value.slice(-2); 
+      
+      let yearNumber = parseInt(year, 10);
+      
+      if (yearNumber < 24) {
+          event.target.value = "";
+          alert("Year must be 24 or greater.");
+      }
+  });
+});
+    </script>
+
+</body>
+
+</html>

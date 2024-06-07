@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F3F2EC;
+
+}
+
+.bg {
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-color: #c9c9c9;
+}
+
+.login-box {
+    background-color: #ffffff;
+    position: absolute;
+    top: 39%;
+    left: 49%;
+    width: 436px;
+    padding: 40px;
+    margin: 20px auto;
+    transform: translate(-50%, -55%);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px #ab907b;
+    border-radius: 10px;
+}
+
+    .login-box p:first-child {
+        margin: 0 0 30px;
+        padding: 0;
+        color: #b4866f;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .login-box .user-box {
+        position: relative;
+    }
+
+        .login-box .user-box input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #b4866f;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid #b4866f;
+            outline: none;
+            background: transparent;
+        }
+
+        .login-box .user-box label {
+            top: -20px;
+            position: absolute;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #b4866f;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .login-box .user-box input:focus ~ label,
+        .login-box .user-box input:valid ~ label {
+            top: -20px;
+            left: 0;
+            color:#ab907b;
+            font-size: 12px;
+        }
+        .login-box form .register {
+            display: inline-block;
+            padding: 10px 16px;
+            font-weight: bold;
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            border-radius: 20%;
+            background: #ab907b;
+            margin-right: 30px;
+        }
+        .submit-container {
+            text-align: center; /* Center the content horizontally */
+            margin-top: 20px; /* Adjust spacing as needed */
+        }
+        
+
+    .login-box a:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px 0 #afafaf;
+    }
+
+a:hover .login-box {
+    box-shadow: 0 0 24px 0 rgba(255, 255, 255, 0.404);
+}
+.forget{
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #b4866f;
+}
+.forgetemail{
+    font-size: 16px;
+    color: #b4866f;
+    text-align: center;
+    margin-bottom: 15px;
+}
